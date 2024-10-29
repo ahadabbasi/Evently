@@ -19,13 +19,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Evently.Modules.Events.Pres
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Commons", "Commons", "{36141F01-6C0B-4C39-87D5-0F0B56B52186}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Evently.Commons.Events.Application", "Src\Commons\Evently.Commons.Events.Application\Evently.Commons.Events.Application.csproj", "{28654FF7-955B-4BB0-94CB-46608EF7D508}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Evently.Commons.Application", "Src\Commons\Evently.Commons.Events.Application\Evently.Commons.Application.csproj", "{28654FF7-955B-4BB0-94CB-46608EF7D508}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Evently.Commons.Events.Domain", "Src\Commons\Evently.Commons.Events.Domain\Evently.Commons.Events.Domain.csproj", "{85D69D4A-B81D-466E-829D-3F18D2BA21B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Evently.Commons.Domain", "Src\Commons\Evently.Commons.Events.Domain\Evently.Commons.Domain.csproj", "{85D69D4A-B81D-466E-829D-3F18D2BA21B0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Evently.Commons.Events.Infrastructure", "Src\Commons\Evently.Commons.Events.Infrastructure\Evently.Commons.Events.Infrastructure.csproj", "{14676910-AAD4-4806-9B50-6272F159694E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Evently.Commons.Infrastructure", "Src\Commons\Evently.Commons.Events.Infrastructure\Evently.Commons.Infrastructure.csproj", "{14676910-AAD4-4806-9B50-6272F159694E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Evently.Commons.Events.Presentation", "Src\Commons\Evently.Commons.Events.Presentation\Evently.Commons.Events.Presentation.csproj", "{7CEC5E96-B499-4532-8BC9-BD3DFA576F99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Evently.Commons.Presentation", "Src\Commons\Evently.Commons.Events.Presentation\Evently.Commons.Presentation.csproj", "{7CEC5E96-B499-4532-8BC9-BD3DFA576F99}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{C850FF89-DFB0-4345-9212-FC0C491EB16E}"
 EndProject
