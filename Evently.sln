@@ -27,15 +27,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Evently.Commons.Events.Infr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Evently.Commons.Events.Presentation", "Src\Commons\Evently.Commons.Events.Presentation\Evently.Commons.Events.Presentation.csproj", "{7CEC5E96-B499-4532-8BC9-BD3DFA576F99}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E6CBDA3A-CB9F-438D-905D-67A0DA522B59}"
-	ProjectSection(SolutionItems) = preProject
-		Solution Items\.editorconfig = Solution Items\.editorconfig
-		Solution Items\Directory.Build.props = Solution Items\Directory.Build.props
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{C850FF89-DFB0-4345-9212-FC0C491EB16E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evently.Application", "Src\Applications\Evently.Application\Evently.Application.csproj", "{73F53048-F472-43CA-A3CB-C81EDDDB45FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Evently.Application", "Src\Applications\Evently.Application\Evently.Application.csproj", "{73F53048-F472-43CA-A3CB-C81EDDDB45FF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ED06770C-01DA-4D6F-807E-86A784A4F141}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
