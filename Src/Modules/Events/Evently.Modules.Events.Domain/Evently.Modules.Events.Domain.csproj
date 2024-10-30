@@ -1,3 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Commons\Evently.Commons.Events.Domain\Evently.Commons.Domain.csproj" />
+  </ItemGroup>
 </Project>
