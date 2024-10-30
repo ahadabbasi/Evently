@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Evently.Modules.Events.Application.Events.Endpoints;
+namespace Evently.Modules.Events.Application.Models;
 
-internal record EventRecord(
+public record EventRecord(
     string Title,
     string Description,
     string Location,

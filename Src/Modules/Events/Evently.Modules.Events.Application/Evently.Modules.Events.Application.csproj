@@ -1,17 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<ItemGroup>
-		<FrameworkReference Include="Microsoft.AspNetCore.App" />
-	</ItemGroup>
-
-
-	<ItemGroup>
 		<PackageReference Include="EFCore.NamingConventions" Version="6.0.0" />
+		<PackageReference Include="MediatR" Version="12.4.1" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.35" />
 	</ItemGroup>
 
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\..\Commons\Evently.Commons.Events.Application\Evently.Commons.Application.csproj" />
+	  <ProjectReference Include="..\..\..\Commons\Evently.Commons.Events.Domain\Evently.Commons.Domain.csproj" />
+	  <ProjectReference Include="..\Evently.Modules.Events.Domain\Evently.Modules.Events.Domain.csproj" />
 	</ItemGroup>
 </Project>

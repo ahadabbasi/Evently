@@ -1,8 +1,9 @@
 ﻿using System;
+using Evently.Modules.Events.Application.Models;
 
-namespace Evently.Modules.Events.Application.Events.Endpoints.Get;
+namespace Evently.Modules.Events.Application.Queries;
 
-internal sealed record GetEventResponse(
+public sealed record GetEventQueryResponse(
     Guid Id,
     string Title,
     string Location,
