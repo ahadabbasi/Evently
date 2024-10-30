@@ -16,7 +16,7 @@ public static class EventsModule
     {
         string databaseConnectionString = configuration.GetConnectionString("SqliteDefault")!;
 
-        services.AddDbContext<Database.EventsDatabaseContext>(options => 
+        services.AddDbContext<Database.Contexts.EventsDatabaseContext>(options => 
             options.UseSqlite(
                 databaseConnectionString,
                 sqliteOptions => sqliteOptions
@@ -36,6 +36,6 @@ public static class EventsModule
 
     public static void ApplyEventMigration(this IApplicationBuilder app)
     {
-        app.ApplyMigrations<Database.EventsDatabaseContext>();
+        app.ApplyMigrations<Database.Contexts.EventsDatabaseContext>();
     }
 }
