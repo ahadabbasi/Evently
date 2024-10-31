@@ -40,9 +40,9 @@ namespace Evently.Modules.Events.Infrastructure.Database.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnName("location");
 
-                    b.Property<DateTime>("StartAtUtc")
+                    b.Property<DateTime>("StartsAtUtc")
                         .HasColumnType("TEXT")
-                        .HasColumnName("start_at_utc");
+                        .HasColumnName("starts_at_utc");
 
                     b.Property<int>("Status")
                         .HasColumnType("INTEGER")

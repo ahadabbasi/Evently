@@ -22,7 +22,7 @@ namespace Evently.Modules.Events.Infrastructure.Database.Migrations
                     title = table.Column<string>(type: "TEXT", nullable: false),
                     description = table.Column<string>(type: "TEXT", nullable: false),
                     location = table.Column<string>(type: "TEXT", nullable: false),
-                    start_at_utc = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    starts_at_utc = table.Column<DateTime>(type: "TEXT", nullable: false),
                     ends_at_utc = table.Column<DateTime>(type: "TEXT", nullable: false),
                     status = table.Column<int>(type: "INTEGER", nullable: false)
                 },

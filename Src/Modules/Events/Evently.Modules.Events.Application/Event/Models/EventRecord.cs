@@ -6,6 +6,6 @@ public record EventRecord(
     string Title,
     string Description,
     string Location,
-    DateTime StartAtUtc,
+    DateTime StartsAtUtc,
     DateTime? EndsAtUtc
 );
