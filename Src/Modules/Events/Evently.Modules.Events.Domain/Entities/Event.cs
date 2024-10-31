@@ -1,21 +1,50 @@
 ﻿using System;
+using Evently.Commons.Domain.Abstractions;
 using Evently.Commons.Domain.Contracts;
+using Evently.Modules.Events.Domain.Events;
 
 namespace Evently.Modules.Events.Domain.Entities;
 
-public sealed class Event : IEntity<Guid>
+public sealed class Event : Domain<Guid>
 {
-    public Guid Id { get; set; }
+    private Event()
+    {
 
-    public string Title { get; set; }
+    }
 
-    public string Description { get; set; }
+    public string Title { get; private set; }
 
-    public string Location { get; set; }
+    public string Description { get; private set; }
 
-    public DateTime StartAtUtc { get; set; }
+    public string Location { get; private set; }
 
-    public DateTime EndsAtUtc { get; set; }
+    public DateTime StartAtUtc { get; private set; }
 
-    public EventStatus Status { get; set; }
+    public DateTime? EndsAtUtc { get; private set; }
+
+    public EventStatus Status { get; private set; }
+
+    public static Event Create(
+        string title,
+        string description,
+        string location,
+        DateTime startAtUtc,
+        DateTime? endsAtUtc
+    )
+    {
+        var result = new Event()
+        {
+            Id = Guid.NewGuid(),
+            Title = title,
+            Description = description,
+            Location = location,
+            StartAtUtc = startAtUtc,
+            EndsAtUtc = endsAtUtc,
+            Status = EventStatus.Draft
+        };
+
+        result.Raise(new EventCreatedDomainEvent(result.Id));
+
+        return result;
+    }
 }
