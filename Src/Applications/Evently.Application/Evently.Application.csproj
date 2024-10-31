@@ -1,10 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
-
-	<!-- <PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
-		<Nullable>enable</Nullable>
-		<ImplicitUsings>enable</ImplicitUsings>
-	</PropertyGroup> -->
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.35">
@@ -16,7 +10,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\Modules\Events\Evently.Modules.Events.Application\Evently.Modules.Events.Application.csproj" />
+	  <ProjectReference Include="..\..\Modules\Events\Evently.Modules.Events.Infrastructure\Evently.Modules.Events.Infrastructure.csproj" />
 	</ItemGroup>
 
 </Project>
