@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Evently.Modules.Events.Application.Models;
 using MediatR;
 
@@ -13,6 +9,6 @@ public sealed record CreateEventCommand(
     string Description,
     string Location,
     DateTime StartAtUtc,
-    DateTime EndsAtUtc
+    DateTime? EndsAtUtc
 ) : EventRecord(Title, Description, Location, StartAtUtc, EndsAtUtc), 
     IRequest<Guid>;

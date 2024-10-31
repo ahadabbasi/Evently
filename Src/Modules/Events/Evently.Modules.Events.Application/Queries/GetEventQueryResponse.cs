@@ -9,5 +9,5 @@ public sealed record GetEventQueryResponse(
     string Location,
     string Description,
     DateTime StartAtUtc,
-    DateTime EndsAtUtc
+    DateTime? EndsAtUtc
 ) : EventRecord(Title, Description, Location, StartAtUtc, EndsAtUtc);

@@ -7,5 +7,5 @@ public record EventRecord(
     string Description,
     string Location,
     DateTime StartAtUtc,
-    DateTime EndsAtUtc
+    DateTime? EndsAtUtc
 );

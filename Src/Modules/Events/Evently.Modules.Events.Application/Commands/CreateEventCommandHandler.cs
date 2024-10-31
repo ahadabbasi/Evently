@@ -22,20 +22,20 @@ internal sealed class CreateEventCommandHandler : IRequestHandler<CreateEventCom
     {
         Guid result = Guid.Empty;
 
-        var eventEntity = new Domain.Entities.Event()
-        {
-            Id = Guid.NewGuid(),
-            Title = request.Title,
-            Description = request.Description,
-            Location = request.Location,
-            StartAtUtc = request.StartAtUtc,
-            EndsAtUtc = request.EndsAtUtc,
-            Status = Domain.Entities.EventStatus.Draft
-        };
+        var eventEntity = Domain.Entities.Event.Create(
+            request.Title,
+            request.Description,
+            request.Location,
+            request.StartAtUtc,
+            request.EndsAtUtc
+        );
 
         await _repository.InsertAsync(eventEntity, cancellationToken);
 
-        await _unitOfWork.SaveChangesAsync(cancellationToken);
+        if(await _unitOfWork.SaveChangesAsync(cancellationToken) < 0)
+        {
+            result = eventEntity.Id;
+        }
 
         return result;
     }
