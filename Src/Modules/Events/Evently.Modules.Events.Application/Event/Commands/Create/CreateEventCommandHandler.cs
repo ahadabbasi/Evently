@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Evently.Commons.Application.Contracts.Messaging.Command;
+using Evently.Commons.Domain.Abstractions.Result;
 using Evently.Modules.Events.Application.Contracts;
 using Evently.Modules.Events.Application.Contracts.Repositories;
-using MediatR;
 
 namespace Evently.Modules.Events.Application.Event.Commands.Create;
 
-internal sealed class CreateEventCommandHandler : IRequestHandler<CreateEventCommand, Guid>
+internal sealed class CreateEventCommandHandler : ICommandHandler<CreateEventCommand, Guid>
 {
     private readonly IEventRepository _repository;
 
@@ -19,23 +21,30 @@ internal sealed class CreateEventCommandHandler : IRequestHandler<CreateEventCom
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<Guid> Handle(CreateEventCommand request, CancellationToken cancellationToken)
+    public async Task<Result<Guid>> Handle(CreateEventCommand request, CancellationToken cancellationToken)
     {
-        Guid result = Guid.Empty;
+        Result<Guid> result = Error.None;
 
-        var eventEntity = Domain.Entities.Event.Create(
+        Result<Domain.Entities.Event> entityResult = Domain.Entities.Event.Create(
             request.Title,
             request.Description,
             request.Location,
-            request.StartAtUtc,
+            request.StartsAtUtc,
             request.EndsAtUtc
         );
 
-        await _repository.InsertAsync(eventEntity, cancellationToken);
-
-        if(await _unitOfWork.SaveChangesAsync(cancellationToken) > 0)
+        if (entityResult.IsSuccess)
         {
-            result = eventEntity.Id;
+            await _repository.InsertAsync(entityResult.Value, cancellationToken);
+
+            if (await _unitOfWork.SaveChangesAsync(cancellationToken) > 0)
+            {
+                result = entityResult.Value.Id;
+            }
+        }
+        else
+        {
+            result = entityResult.Errors.ToArray();
         }
 
         return result;

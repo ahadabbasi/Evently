@@ -8,6 +8,6 @@ public sealed record GetEventQueryResponse(
     string Title,
     string Location,
     string Description,
-    DateTime StartAtUtc,
+    DateTime StartsAtUtc,
     DateTime? EndsAtUtc
-) : EventRecord(Title, Description, Location, StartAtUtc, EndsAtUtc);
+) : EventRecord(Title, Description, Location, StartsAtUtc, EndsAtUtc);

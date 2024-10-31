@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Linq;
-using System.Linq.Expressions;
 using System.Threading;
-using Evently.Modules.Events.Application.Queries;
+using Evently.Commons.Domain.Abstractions.Result;
+using Evently.Modules.Events.Application.Event.Queries.Get;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
-using Microsoft.EntityFrameworkCore;
 
 namespace Evently.Modules.Events.Presentation.Endpoints.Get;
 
@@ -24,9 +22,9 @@ public static class GetEvent
         {
             IResult result = Results.NotFound();
 
-            GetEventQueryResponse response = await sender.Send(new GetEventQuery(id), cancellation);
+            Result<GetEventQueryResponse> response = await sender.Send(new GetEventQuery(id), cancellation);
 
-            if(response != null)
+            if(response.IsSuccess)
             {
                 result = Results.Ok(response);
             }

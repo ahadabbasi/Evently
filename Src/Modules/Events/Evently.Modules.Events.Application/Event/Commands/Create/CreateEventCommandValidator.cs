@@ -9,8 +9,8 @@ internal sealed class CreateEventCommandValidator : AbstractValidator<CreateEven
         RuleFor(model => model.Title).NotEmpty();
         RuleFor(model => model.Description).NotEmpty();
         RuleFor(model => model.Location).NotEmpty();
-        RuleFor(model => model.StartAtUtc).NotEmpty();
-        RuleFor(model => model.EndsAtUtc).Must((model, value) => value > model.StartAtUtc)
+        RuleFor(model => model.StartsAtUtc).NotEmpty();
+        RuleFor(model => model.EndsAtUtc).Must((model, value) => value > model.StartsAtUtc)
             .When(model => model.EndsAtUtc != null);
     }
 }

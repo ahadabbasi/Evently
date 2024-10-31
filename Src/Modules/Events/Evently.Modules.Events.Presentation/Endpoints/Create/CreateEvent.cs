@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
-using Evently.Modules.Events.Application.Commands;
+using Evently.Commons.Domain.Abstractions.Result;
+using Evently.Modules.Events.Application.Event.Commands.Create;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -19,17 +20,17 @@ public static class CreateEvent
             CancellationToken cancellation
         ) =>
         {
-            Guid result = await sender.Send(
+            Result<Guid> result = await sender.Send(
                 new CreateEventCommand(
                     request.Title,
                     request.Description,
                     request.Location,
-                    request.StartAtUtc,
+                    request.StartsAtUtc,
                     request.EndsAtUtc
                 ), 
                 cancellation
             );
-            return Results.Ok(result);
+            return result.IsSuccess ? Results.Ok(result.Value) : Results.BadRequest(result.Errors);
         }).WithTags(Tags.Events);
     }
 }
