@@ -8,11 +8,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 
-namespace Evently.Modules.Events.Presentation.Endpoints.Get;
+namespace Evently.Modules.Events.Presentation.Endpoints.Event.Get;
 
-public static class GetEvent
+internal static class GetEvent
 {
-    public static void MapEndpoint(IEndpointRouteBuilder app)
+    internal static void MapEndpoint(IEndpointRouteBuilder app)
     {
         app.MapGet("events/{id:guid}", async (
             [FromRoute] Guid id,

@@ -8,11 +8,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 
-namespace Evently.Modules.Events.Presentation.Endpoints.Create;
+namespace Evently.Modules.Events.Presentation.Endpoints.Event.Create;
 
-public static class CreateEvent
+internal static class CreateEvent
 {
-    public static void MapEndpoint(IEndpointRouteBuilder app)
+    internal static void MapEndpoint(IEndpointRouteBuilder app)
     {
         app.MapPost("events", async (
             [FromBody] CreateEventRequest request,

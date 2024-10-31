@@ -15,7 +15,6 @@ public static class Program
         Startup.Configuration(app);
 
         app.Run();
-
     }
 }
 
