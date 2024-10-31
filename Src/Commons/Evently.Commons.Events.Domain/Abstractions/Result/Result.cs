@@ -33,6 +33,8 @@ public class Result
     public static implicit operator Result(Error error) => Failure(new Error[] { error });
 
     public static implicit operator Result(Error[] errors) => Failure(errors);
+
+    public static implicit operator Result(bool value) => value ? Success() : Error.None;
 }
 
 public class Result<TValue> : Result
