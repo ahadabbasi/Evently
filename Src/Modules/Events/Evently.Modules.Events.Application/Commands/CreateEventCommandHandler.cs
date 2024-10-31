@@ -32,7 +32,7 @@ internal sealed class CreateEventCommandHandler : IRequestHandler<CreateEventCom
 
         await _repository.InsertAsync(eventEntity, cancellationToken);
 
-        if(await _unitOfWork.SaveChangesAsync(cancellationToken) < 0)
+        if(await _unitOfWork.SaveChangesAsync(cancellationToken) > 0)
         {
             result = eventEntity.Id;
         }

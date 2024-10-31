@@ -8,5 +8,5 @@ internal sealed record CreateEventRequest(
     string Description,
     string Location,
     DateTime StartAtUtc,
-    DateTime EndsAtUtc
+    DateTime? EndsAtUtc
 ) : EventRecord(Title, Description, Location, StartAtUtc, EndsAtUtc);
