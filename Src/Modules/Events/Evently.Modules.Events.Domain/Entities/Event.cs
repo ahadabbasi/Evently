@@ -1,7 +1,6 @@
 ﻿using System;
-using Evently.Commons.Domain.Abstractions;
-using Evently.Commons.Domain.Contracts;
-using Evently.Modules.Events.Domain.Events;
+using Evently.Commons.Domain.Abstractions.Entity;
+using Evently.Modules.Events.Domain.Events.Event;
 
 namespace Evently.Modules.Events.Domain.Entities;
 
@@ -43,7 +42,7 @@ public sealed class Event : Domain<Guid>
             Status = EventStatus.Draft
         };
 
-        result.Raise(new EventCreatedDomainEvent(result.Id));
+        result.Raise(new EventCreatedEvent(result.Id));
 
         return result;
     }
