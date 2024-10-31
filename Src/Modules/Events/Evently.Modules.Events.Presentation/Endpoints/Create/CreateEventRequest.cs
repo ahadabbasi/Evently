@@ -1,5 +1,5 @@
 ﻿using System;
-using Evently.Modules.Events.Application.Models;
+using Evently.Modules.Events.Application.Event.Models;
 
 namespace Evently.Modules.Events.Presentation.Endpoints.Create;
 

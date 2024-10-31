@@ -1,8 +1,8 @@
 ﻿using System;
-using Evently.Modules.Events.Application.Models;
+using Evently.Modules.Events.Application.Event.Models;
 using MediatR;
 
-namespace Evently.Modules.Events.Application.Commands;
+namespace Evently.Modules.Events.Application.Event.Commands.Create;
 
 public sealed record CreateEventCommand(
     string Title,

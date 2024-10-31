@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Evently.Modules.Events.Application.Commands;
+namespace Evently.Modules.Events.Application.Event.Commands.Create;
 
 internal sealed class CreateEventCommandValidator : AbstractValidator<CreateEventCommand>
 {

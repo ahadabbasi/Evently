@@ -4,10 +4,11 @@ using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Evently.Modules.Events.Application.Contracts;
+using Evently.Modules.Events.Application.Contracts.Repositories;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Evently.Modules.Events.Application.Queries;
+namespace Evently.Modules.Events.Application.Event.Queries.Get;
 
 internal sealed class GetEventQueryHandler : IRequestHandler<GetEventQuery, GetEventQueryResponse?>
 {

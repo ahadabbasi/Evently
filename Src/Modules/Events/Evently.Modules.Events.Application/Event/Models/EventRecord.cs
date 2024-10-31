@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Evently.Modules.Events.Application.Models;
+namespace Evently.Modules.Events.Application.Event.Models;
 
 public record EventRecord(
     string Title,

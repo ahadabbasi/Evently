@@ -2,9 +2,10 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Evently.Modules.Events.Application.Contracts;
+using Evently.Modules.Events.Application.Contracts.Repositories;
 using MediatR;
 
-namespace Evently.Modules.Events.Application.Commands;
+namespace Evently.Modules.Events.Application.Event.Commands.Create;
 
 internal sealed class CreateEventCommandHandler : IRequestHandler<CreateEventCommand, Guid>
 {

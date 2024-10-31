@@ -1,6 +1,8 @@
 ﻿using Evently.Commons.Application.Extensions;
 using Evently.Modules.Events.Application.Contracts;
+using Evently.Modules.Events.Application.Contracts.Repositories;
 using Evently.Modules.Events.Infrastructure.Implementations;
+using Evently.Modules.Events.Infrastructure.Implementations.Repositories;
 using Evently.Modules.Events.Presentation;
 using FluentValidation;
 using Microsoft.AspNetCore.Builder;

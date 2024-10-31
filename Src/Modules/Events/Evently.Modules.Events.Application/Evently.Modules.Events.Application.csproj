@@ -13,4 +13,11 @@
 	  <ProjectReference Include="..\..\..\Commons\Evently.Commons.Events.Domain\Evently.Commons.Domain.csproj" />
 	  <ProjectReference Include="..\Evently.Modules.Events.Domain\Evently.Modules.Events.Domain.csproj" />
 	</ItemGroup>
+
+
+	<ItemGroup>
+	  <Folder Include="Category\Commands\" />
+	  <Folder Include="Category\Models\" />
+	  <Folder Include="Category\Queries\" />
+	</ItemGroup>
 </Project>
