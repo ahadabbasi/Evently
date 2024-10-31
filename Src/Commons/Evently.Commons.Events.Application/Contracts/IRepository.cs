@@ -7,7 +7,7 @@ using Evently.Commons.Domain.Contracts;
 
 namespace Evently.Commons.Application.Contracts;
 
-public interface IRepository<TEntity, TKey> where TEntity : class, IEntity<TKey>
+public interface IRepository<TEntity, TKey> where TEntity : class, IDomain<TKey>
 {
     IQueryable<TEntity> Query();
 

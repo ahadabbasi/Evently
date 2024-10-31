@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Evently.Commons.Infrastructure.Abstractions;
 
 public abstract class DatabaseContextRepository<TDbContext, TEntity, TKey> : IRepository<TEntity, TKey> 
-    where TEntity : class, IEntity<TKey>
+    where TEntity : class, IDomain<TKey>
     where TDbContext : DbContext
 {
     protected TDbContext Context { get; }
