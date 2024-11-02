@@ -45,6 +45,8 @@ public static class EventsModuleStartup
         services.AddScoped<IEventRepository, EventRepository>();
 
         services.AddScoped<IEventUnitOfWork, EventUnitOfWork>();
+
+        services.AddScoped<IDateTimeProvider, DateTimeProvider>();
     }
 
     public static void MapEventEndpoints(this IEndpointRouteBuilder app)
