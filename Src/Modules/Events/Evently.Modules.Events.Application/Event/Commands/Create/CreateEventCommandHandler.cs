@@ -35,11 +35,11 @@ internal sealed class CreateEventCommandHandler : ICommandHandler<CreateEventCom
 
         if (entityResult.IsSuccess)
         {
-            await _repository.InsertAsync(entityResult.Value, cancellationToken);
+            await _repository.InsertAsync(entityResult.Value!, cancellationToken);
 
             if (await _unitOfWork.SaveChangesAsync(cancellationToken) > 0)
             {
-                result = entityResult.Value.Id;
+                result = entityResult.Value!.Id;
             }
         }
         else

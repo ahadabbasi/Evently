@@ -15,4 +15,9 @@ public static class Event
         "Events.EndDatePrecedesStartDate",
         "The event end date precedes the start date"
     );
+
+    public static readonly Error AlreadyStarted = (
+        "Events.AlreadyStarted",
+        "The event has already started"
+    );
 }

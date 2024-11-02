@@ -26,7 +26,7 @@ internal static class GetEvent
 
             if(response.IsSuccess)
             {
-                result = Results.Ok(response);
+                result = Results.Ok(response.Value);
             }
 
             return result;

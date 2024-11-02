@@ -88,13 +88,18 @@ public sealed class Event : Domain<Guid>
     {
         Result result = Errors.Event.AlreadyCanceled;
 
-        if (Status != EventStatus.Canceled && StartsAtUtc > utcNow)
+        if (Status != EventStatus.Canceled )
         {
-            Status = EventStatus.Canceled;
+            result = Errors.Event.AlreadyStarted;
 
-            Raise(new EventCanceledEvent(Id));
+            if (StartsAtUtc > utcNow)
+            {
+                Status = EventStatus.Canceled;
 
-            result = true;
+                Raise(new EventCanceledEvent(Id));
+
+                result = true;
+            }
         }
 
         return result;

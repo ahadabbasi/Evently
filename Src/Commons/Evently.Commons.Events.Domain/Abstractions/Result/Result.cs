@@ -28,7 +28,7 @@ public class Result
 
     public static Result Failure(IEnumerable<Error> errors) => new Result(false, errors);
 
-    public static Result<TValue> Failure<TValue>(IEnumerable<Error> errors) => new Result<TValue>(default, true, errors);
+    public static Result<TValue> Failure<TValue>(IEnumerable<Error> errors) => new Result<TValue>(default, false, errors);
 
     public static implicit operator Result(Error error) => Failure(new Error[] { error });
 
@@ -39,17 +39,29 @@ public class Result
 
 public class Result<TValue> : Result
 {
+    //private readonly TValue _value;
+
     internal Result(TValue? value, bool success, IEnumerable<Error> errors) : base(success, errors)
     {
-        if(success && value == null || !success && value != null)
+        
+        if(
+            success && (value == null || value.Equals(DefaultValue())) || 
+            !success && value != null && !value.Equals(DefaultValue())
+        )
         {
             throw new Exception();
         }
+        
 
-        Value = value!;
+        Value = value;
     }
 
-    public TValue Value { get; protected set; }
+    private TValue DefaultValue()
+    {
+        return default;
+    }
+
+    public TValue? Value { get; protected set; }
 
     public static implicit operator Result<TValue>(TValue? value) =>
         value != null ? Success(value) : Failure<TValue>(new Error[] { Error.NullValue });
