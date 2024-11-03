@@ -44,6 +44,8 @@ public static class EventsModuleStartup
 
         services.AddScoped<IEventRepository, EventRepository>();
 
+        services.AddScoped<ITicketTypeRepository, TicketTypeRepository>();
+
         services.AddScoped<IEventUnitOfWork, EventUnitOfWork>();
 
         services.AddScoped<IDateTimeProvider, DateTimeProvider>();

@@ -20,4 +20,10 @@ public static class Event
         "Events.AlreadyStarted",
         "The event has already started"
     );
+
+    public static readonly Error NoTicketsFound = (
+        "Events.NoTicketsFound",
+        "The event does not have any ticket types defined"
+        
+    );
 }
