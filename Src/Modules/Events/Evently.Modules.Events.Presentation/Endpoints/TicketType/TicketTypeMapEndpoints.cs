@@ -10,9 +10,12 @@ internal static class TicketTypeMapEndPoints
 {
     internal static void MapTicketTypeEndpoints(this IEndpointRouteBuilder app)
     {
-        CreateTicketType.MapEndpoint(app);
-        GetTicketType.MapEndpoint(app);
-        ChangePriceTicketType.MapEndpoint(app);
-        ListOfTicketTypes.MapEndpoint(app);
+        // Commands
+        CreateTicketTypeEndpoint.MapEndpoint(app);
+        ChangePriceTicketTypeEndpoint.MapEndpoint(app);
+
+        // Queries
+        GetTicketTypeEndpoint.MapEndpoint(app);
+        ListOfTicketTypesEndpoint.MapEndpoint(app);
     }
 }

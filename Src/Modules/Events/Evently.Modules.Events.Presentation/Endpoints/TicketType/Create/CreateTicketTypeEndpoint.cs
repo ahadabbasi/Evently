@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Routing;
 
 namespace Evently.Modules.Events.Presentation.Endpoints.TicketType.Create;
 
-internal sealed class CreateTicketType : IMapEndpoint
+internal sealed class CreateTicketTypeEndpoint : IMapEndpoint
 {
     public static void MapEndpoint(IEndpointRouteBuilder app)
     {

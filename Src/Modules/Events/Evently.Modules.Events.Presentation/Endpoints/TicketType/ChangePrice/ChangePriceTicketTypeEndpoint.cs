@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Routing;
 
 namespace Evently.Modules.Events.Presentation.Endpoints.TicketType.ChangePrice;
 
-internal sealed class ChangePriceTicketType : IMapEndpoint
+internal sealed class ChangePriceTicketTypeEndpoint : IMapEndpoint
 {
     public static void MapEndpoint(IEndpointRouteBuilder app)
     {
