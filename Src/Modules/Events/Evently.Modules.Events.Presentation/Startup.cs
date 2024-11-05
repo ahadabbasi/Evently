@@ -1,4 +1,5 @@
-﻿using Evently.Modules.Events.Presentation.Endpoints.Event;
+﻿using Evently.Modules.Events.Presentation.Endpoints.Category;
+using Evently.Modules.Events.Presentation.Endpoints.Event;
 using Evently.Modules.Events.Presentation.Endpoints.TicketType;
 using Microsoft.AspNetCore.Routing;
 
@@ -9,5 +10,6 @@ public static class Startup
     {
         app.MapEventEndpoints();
         app.MapTicketTypeEndpoints();
+        app.MapCategoryEndpoints();
     }
 }
