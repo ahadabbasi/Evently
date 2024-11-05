@@ -27,6 +27,7 @@ internal sealed class ListOfEventsQueryHandler : IQueryHandler<ListOfEventsQuery
             .Select(model => 
                 new EventQueryResponse(
                     model.Id,
+                    model.CategoryId,
                     model.Title,
                     model.Location,
                     model.Description,

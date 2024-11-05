@@ -13,38 +13,60 @@ internal sealed class CreateEventCommandHandler : ICommandHandler<CreateEventCom
 {
     private readonly IEventRepository _repository;
 
+    private readonly IDateTimeProvider _dateTimeProvider;
+
+    private readonly ICategoryRepository _categoryRepository;
+
     private readonly IEventUnitOfWork _unitOfWork;
 
-    public CreateEventCommandHandler(IEventRepository repository, IEventUnitOfWork unitOfWork)
+    public CreateEventCommandHandler(
+        IEventRepository repository,
+        IEventUnitOfWork unitOfWork,
+        IDateTimeProvider dateTimeProvider,
+        ICategoryRepository categoryRepository
+    )
     {
         _repository = repository;
+
         _unitOfWork = unitOfWork;
+
+        _dateTimeProvider = dateTimeProvider;
+
+        _categoryRepository = categoryRepository;
     }
 
     public async Task<Result<Guid>> Handle(CreateEventCommand request, CancellationToken cancellationToken)
     {
-        Result<Guid> result = Error.None;
+        Result<Guid> result = Domain.Errors.Event.StartDateInPast;
 
-        Result<Domain.Entities.Event> entityResult = Domain.Entities.Event.Create(
-            request.Title,
-            request.Description,
-            request.Location,
-            request.StartsAtUtc,
-            request.EndsAtUtc
-        );
-
-        if (entityResult.IsSuccess)
+        if (request.StartsAtUtc > _dateTimeProvider.UtcNow)
         {
-            await _repository.InsertAsync(entityResult.Value!, cancellationToken);
+            result = Domain.Errors.Category.NotFound(request.CategoryId);
 
-            if (await _unitOfWork.SaveChangesAsync(cancellationToken) > 0)
+            if (await _categoryRepository.ExistByIdAsync(request.CategoryId, cancellationToken))
             {
-                result = entityResult.Value!.Id;
+
+                Result<Domain.Entities.Event> entityResult = Domain.Entities.Event.Create(
+                    request.CategoryId,
+                    request.Title,
+                    request.Description,
+                    request.Location,
+                    request.StartsAtUtc,
+                    request.EndsAtUtc
+                );
+
+                result = entityResult.Errors.ToArray();
+
+                if (entityResult.IsSuccess)
+                {
+                    await _repository.InsertAsync(entityResult.Value!, cancellationToken);
+
+                    result = 
+                        await _unitOfWork.SaveChangesAsync(cancellationToken) > 0 ? 
+                        entityResult.Value!.Id : 
+                        Error.None;
+                }
             }
-        }
-        else
-        {
-            result = entityResult.Errors.ToArray();
         }
 
         return result;

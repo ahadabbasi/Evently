@@ -12,6 +12,8 @@ public sealed class Event : Domain<Guid>
 
     }
 
+    public Guid CategoryId { get; private set; }
+
     public string Title { get; private set; }
 
     public string Description { get; private set; }
@@ -25,6 +27,7 @@ public sealed class Event : Domain<Guid>
     public EventStatus Status { get; private set; }
 
     public static Result<Event> Create(
+        Guid categoryId,
         string title,
         string description,
         string location,
@@ -39,6 +42,7 @@ public sealed class Event : Domain<Guid>
             var entity = new Event()
             {
                 Id = Guid.NewGuid(),
+                CategoryId = categoryId,
                 Title = title,
                 Description = description,
                 Location = location,

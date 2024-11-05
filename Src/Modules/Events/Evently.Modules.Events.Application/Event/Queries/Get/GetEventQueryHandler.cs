@@ -35,6 +35,7 @@ internal sealed class GetEventQueryHandler : IQueryHandler<GetEventQuery, EventQ
             .Select(model => 
                 new EventQueryResponse(
                     model.Id, 
+                    model.CategoryId,
                     model.Title, 
                     model.Location, 
                     model.Description, 

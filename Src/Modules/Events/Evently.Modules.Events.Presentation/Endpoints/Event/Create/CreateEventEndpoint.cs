@@ -23,6 +23,7 @@ internal sealed class CreateEventEndpoint : IMapEndpoint
         {
             Result<Guid> result = await sender.Send(
                 new CreateEventCommand(
+                    request.CategoryId,
                     request.Title,
                     request.Description,
                     request.Location,
