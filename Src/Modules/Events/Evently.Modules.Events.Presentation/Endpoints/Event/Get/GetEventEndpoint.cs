@@ -35,6 +35,6 @@ internal sealed class GetEventEndpoint : IMapEndpoint
             }
 
             return result;
-        }).WithTags(Tags.Events);
+        }).WithTags(Modules.Events.Domain.Tags.Events);
     }
 }

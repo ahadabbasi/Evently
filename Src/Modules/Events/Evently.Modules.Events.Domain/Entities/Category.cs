@@ -33,7 +33,7 @@ public sealed class Category : Domain<Guid>
 
     public void ChangeName(string name)
     {
-        if (Name == name)
+        if (Name.ToUpper().Equals(name.ToUpper()))
         {
             return;
         }

@@ -31,6 +31,6 @@ internal sealed class ChangePriceTicketTypeEndpoint : IMapEndpoint
             );
 
             return result.IsSuccess ? Results.Ok() : Results.BadRequest(result.Errors);
-        }).WithTags(Tags.TicketTypes);
+        }).WithTags(Modules.Events.Domain.Tags.TicketTypes);
     }
 }

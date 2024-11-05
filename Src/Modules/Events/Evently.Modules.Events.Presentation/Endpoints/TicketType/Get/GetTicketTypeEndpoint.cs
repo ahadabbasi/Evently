@@ -25,6 +25,6 @@ internal sealed class GetTicketTypeEndpoint : IMapEndpoint
             Result<TicketTypeQueryResponse> result = await sender.Send(new GetTicketTypeQuery(id), cancellation);
 
             return result.IsSuccess ? Results.Ok(result.Value) : Results.BadRequest(result.Errors);
-        }).WithTags(Tags.TicketTypes);
+        }).WithTags(Modules.Events.Domain.Tags.TicketTypes);
     }
 }

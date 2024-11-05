@@ -32,6 +32,6 @@ internal sealed class CreateEventEndpoint : IMapEndpoint
                 cancellation
             );
             return result.IsSuccess ? Results.Ok(result.Value) : Results.BadRequest(result.Errors);
-        }).WithTags(Tags.Events);
+        }).WithTags(Modules.Events.Domain.Tags.Events);
     }
 }

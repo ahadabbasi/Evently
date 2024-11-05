@@ -32,6 +32,6 @@ internal sealed class RescheduleEventEndpoint
 
             return result.IsSuccess ? Results.Ok() : Results.BadRequest();
         })
-        .WithTags(Tags.Events);
+        .WithTags(Modules.Events.Domain.Tags.Events);
     }
 }

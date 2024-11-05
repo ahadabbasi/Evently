@@ -24,6 +24,6 @@ internal sealed class CancelEventEndpoint : IMapEndpoint
             Result result = await sender.Send(new CancelEventCommand(id), cancellation);
 
             return result.IsSuccess ? Results.Ok() : Results.BadRequest(result.Errors);
-        }).WithTags(Tags.Events);
+        }).WithTags(Modules.Events.Domain.Tags.Events);
     }
 }

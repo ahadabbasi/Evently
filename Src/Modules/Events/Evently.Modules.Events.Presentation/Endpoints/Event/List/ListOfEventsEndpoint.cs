@@ -27,6 +27,6 @@ internal sealed class ListOfEventsEndpoint : IMapEndpoint
             );
 
             return Results.Ok(result.Value);
-        }).WithTags(Tags.Events);
+        }).WithTags(Modules.Events.Domain.Tags.Events);
     }
 }
