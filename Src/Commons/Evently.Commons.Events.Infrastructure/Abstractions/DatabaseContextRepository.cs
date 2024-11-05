@@ -24,9 +24,9 @@ public abstract class DatabaseContextRepository<TDbContext, TEntity, TKey> : IRe
         Set = context.Set<TEntity>();
     }
 
-    public Task<bool> ExistAsync(TKey id, CancellationToken cancellation)
+    public Task<bool> ExistByIdAsync(TKey id, CancellationToken cancellation)
     {
-        return ExistAsync(model => model.Id!.Equals(id), cancellation);
+        return ExistAsync(GenerateExpressionBaseOnId(id), cancellation);
     }
 
     public Task<bool> ExistAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellation)
@@ -42,5 +42,16 @@ public abstract class DatabaseContextRepository<TDbContext, TEntity, TKey> : IRe
     public IQueryable<TEntity> Query()
     {
         return Set;
+    }
+
+    public Task<TEntity?> GetByIdAsync(TKey id, CancellationToken cancellation)
+    {
+        return Query()
+            .FirstOrDefaultAsync(GenerateExpressionBaseOnId(id), cancellation);
+    }
+
+    protected Expression<Func<TEntity, bool>> GenerateExpressionBaseOnId(TKey id)
+    {
+        return model => model.Id != null && model.Id.Equals(id);
     }
 }
