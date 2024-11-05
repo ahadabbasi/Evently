@@ -33,6 +33,8 @@ public sealed class TicketType : Domain<Guid>
             Quantity = quantity
         };
 
+        ticketType.Raise(new TicketTypeCreatedEvent(ticketType.Id));
+
         return ticketType;
     }
 
