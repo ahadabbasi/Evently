@@ -14,7 +14,7 @@ internal static class CancelEvent
 {
     internal static void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapDelete("events/{id}/cancel", async (
+        app.MapDelete(string.Format("{0}/{{id:guid}}/cancel", Routes.EventRoutePrefix), async (
             [FromRoute] Guid id,
             [FromServices] ISender sender,
             CancellationToken cancellation

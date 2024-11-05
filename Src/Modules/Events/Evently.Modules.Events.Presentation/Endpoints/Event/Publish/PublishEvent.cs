@@ -14,7 +14,7 @@ internal static class PublishEvent
 {
     internal static void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapPut("events/{id:guid}/publish", async (
+        app.MapPut(string.Format("{0}/{{id:guid}}/publish", Routes.EventRoutePrefix), async (
             [FromRoute]Guid id, 
             [FromServices]ISender sender,
             CancellationToken cancellation

@@ -14,7 +14,7 @@ internal static class CreateEvent
 {
     internal static void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapPost("events", async (
+        app.MapPost(Routes.EventRoutePrefix, async (
             [FromBody] CreateEventRequest request,
             [FromServices] ISender sender,
             CancellationToken cancellation

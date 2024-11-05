@@ -14,7 +14,7 @@ internal static class GetEvent
 {
     internal static void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapGet("events/{id:guid}", async (
+        app.MapGet(string.Format("{0}/{{id:guid}}", Routes.EventRoutePrefix), async (
             [FromRoute] Guid id,
             [FromServices] ISender sender,
             CancellationToken cancellation

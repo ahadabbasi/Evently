@@ -15,7 +15,7 @@ internal sealed class ChangePriceTicketType : IMapEndpoint
 {
     public static void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapPut("ticket-types/{id:guid}/price", async (
+        app.MapPut(string.Format("{0}/{{id:guid}}/price", Routes.TicketTypeRoutePrefix), async (
             [FromRoute] Guid id, 
             [FromBody] ChangePriceTicketTypeRequest request, 
             [FromServices] ISender sender,

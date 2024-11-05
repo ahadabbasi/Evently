@@ -19,7 +19,7 @@ internal sealed class CreateTicketType : IMapEndpoint
 {
     public static void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapPost("ticket-types", async (
+        app.MapPost(Routes.TicketTypeRoutePrefix, async (
             [FromBody] CreateTicketTypeRequest request, 
             [FromServices]ISender sender,
             CancellationToken cancellation
