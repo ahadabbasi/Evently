@@ -1,6 +1,7 @@
 ﻿using Evently.Modules.Events.Presentation.Endpoints.Event.Cancel;
 using Evently.Modules.Events.Presentation.Endpoints.Event.Create;
 using Evently.Modules.Events.Presentation.Endpoints.Event.Get;
+using Evently.Modules.Events.Presentation.Endpoints.Event.List;
 using Evently.Modules.Events.Presentation.Endpoints.Event.Publish;
 using Evently.Modules.Events.Presentation.Endpoints.Event.Reschedule;
 using Microsoft.AspNetCore.Routing;
@@ -13,6 +14,7 @@ internal static class EventEndpoints
     {
         // Queries
         GetEventEndpoint.MapEndpoint(app);
+        ListOfEventsEndpoint.MapEndpoint(app);
 
         // Commands
         CancelEventEndpoint.MapEndpoint(app);

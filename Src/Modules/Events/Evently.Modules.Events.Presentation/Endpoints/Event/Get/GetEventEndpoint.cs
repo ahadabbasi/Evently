@@ -2,6 +2,7 @@
 using System.Threading;
 using Evently.Commons.Domain.Abstractions.Result;
 using Evently.Commons.Presentation;
+using Evently.Modules.Events.Application.Event.Models;
 using Evently.Modules.Events.Application.Event.Queries.Get;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -23,7 +24,10 @@ internal sealed class GetEventEndpoint : IMapEndpoint
         {
             IResult result = Results.NotFound();
 
-            Result<GetEventQueryResponse> response = await sender.Send(new GetEventQuery(id), cancellation);
+            Result<EventQueryResponse> response = await sender.Send(
+                new GetEventQuery(id), 
+                cancellation
+            );
 
             if(response.IsSuccess)
             {

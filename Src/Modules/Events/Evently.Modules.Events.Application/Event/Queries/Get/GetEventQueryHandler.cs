@@ -7,12 +7,13 @@ using Evently.Commons.Application.Contracts.Messaging.Query;
 using Evently.Commons.Domain.Abstractions.Result;
 using Evently.Modules.Events.Application.Contracts;
 using Evently.Modules.Events.Application.Contracts.Repositories;
+using Evently.Modules.Events.Application.Event.Models;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Evently.Modules.Events.Application.Event.Queries.Get;
 
-internal sealed class GetEventQueryHandler : IQueryHandler<GetEventQuery, GetEventQueryResponse>
+internal sealed class GetEventQueryHandler : IQueryHandler<GetEventQuery, EventQueryResponse>
 {
     private readonly IEventRepository _repository;
 
@@ -21,9 +22,9 @@ internal sealed class GetEventQueryHandler : IQueryHandler<GetEventQuery, GetEve
         _repository = repository;
     }
 
-    public async Task<Result<GetEventQueryResponse>> Handle(GetEventQuery request, CancellationToken cancellationToken)
+    public async Task<Result<EventQueryResponse>> Handle(GetEventQuery request, CancellationToken cancellationToken)
     {
-        Result<GetEventQueryResponse> result = Domain.Errors.Event.NotFound(request.Id);
+        Result<EventQueryResponse> result = Domain.Errors.Event.NotFound(request.Id);
 
         Func<Guid, Expression<Func<Domain.Entities.Event, bool>>> predicate = (id) => model => model.Id == id;
 
@@ -32,7 +33,7 @@ internal sealed class GetEventQueryHandler : IQueryHandler<GetEventQuery, GetEve
             result = await _repository.Query()
             .Where(predicate(request.Id))
             .Select(model => 
-                new GetEventQueryResponse(
+                new EventQueryResponse(
                     model.Id, 
                     model.Title, 
                     model.Location, 
